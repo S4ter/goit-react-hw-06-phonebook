@@ -10,14 +10,13 @@ export const Contact = ({ contact }) => {
     <div className="filter_form">
       <p key={contact.id}>
         {contact.name}: {contact.number}
+        <button
+          className="delete_button"
+          onClick={() => handleDelete(contact.id)}
+        >
+          Delete
+        </button>
       </p>
-
-      <button
-        className="delete_button"
-        onClick={() => handleDelete(contact.id)}
-      >
-        Delete
-      </button>
     </div>
   );
 };

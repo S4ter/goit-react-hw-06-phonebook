@@ -1,7 +1,15 @@
-import { legacy_createStore as createStore } from 'redux';
-import { rootReducer } from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import { contactsReducer } from './reducers';
+import localStorageMiddleware from './localStorageMiddleware';
 
-const { devToolsEnhancer } = require('@redux-devtools/extension');
+const initialState = {
+  contacts: JSON.parse(localStorage.getItem('contacts')) || [],
+};
 
-const enhancer = devToolsEnhancer();
-export const store = createStore(rootReducer, enhancer);
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+  },
+  preloadedState: initialState,
+  middleware: [localStorageMiddleware],
+});

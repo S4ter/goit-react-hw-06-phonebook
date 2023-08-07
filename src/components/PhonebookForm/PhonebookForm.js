@@ -11,7 +11,6 @@ export const PhonebookForm = () => {
     name: '',
     number: '',
   });
-  // const [filter, setFilter] = useState('');
 
   const handleChangeInput = e => {
     setContact(prevState => ({
@@ -21,11 +20,6 @@ export const PhonebookForm = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-
-    // if (checkDuplicateContact(contact.name)) {
-    //   alert('Contact with the same name already exists!');
-    //   return;
-    // }
     dispatch(addContact(contact.name, contact.number));
   };
   return (
@@ -35,10 +29,9 @@ export const PhonebookForm = () => {
         <input
           type="text"
           name="name"
-          value={contact.name}
           onChange={handleChangeInput}
           required
-          // pattern="^[A-Za-z.'\- ]+$"
+          pattern="^[A-Za-z.'\- ]+$"
           className="form_input"
           placeholder="Name"
         />
@@ -46,10 +39,9 @@ export const PhonebookForm = () => {
         <input
           type="tel"
           name="number"
-          value={contact.number}
           onChange={handleChangeInput}
           required
-          // pattern="^\+?\d{1,4}?\s?\(?\d{1,4}?\)?\s?\d{1,4}\s?\d{1,4}\s?\d{1,9}$"
+          pattern="^\+?\d{1,4}?\s?\(?\d{1,4}?\)?\s?\d{1,4}\s?\d{1,4}\s?\d{1,9}$"
           className="form_input"
           placeholder="Number"
         />
